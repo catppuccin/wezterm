@@ -1,7 +1,7 @@
 <h3 align="center">
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/dev/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/dev/assets/misc/transparent.png" height="30" width="0px"/>
-	Catppuccin for App
+	Catppuccin for WezTerm
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/dev/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
@@ -12,21 +12,55 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/dev/assets/misc/sample.png"/>
+  <img src="./assets/WezTerm.jpg"/>
 </p>
 
 ## Usage
 
 1. Clone this repository locally
-2. Open the app's settings
-3. Select `import theme` and browse to where you cloned Catppuccin
-4. Select it
+1. If you're on a POSIX system: create a directory named `~/.config/wezterm/colors`, if you're on Windows, create a directory named `colors` in the same directory as the `wezterm.exe` (usually `C:\Program Files\WezTerm`).
+1. Move the file `Catppuccin.toml` from where you cloned Catppuccin to the `colors` directory you created in 2.
+1. Open your WezTerm config file (on a POSIX system: `~/.wezterm.lua` or `~/.config/wezterm/wezterm.lua`; on Windows: `wezterm.lua` in the same directory as the `wezterm.exe`).
+   The WezTerm config file has the following structure:
 
-## 🙋 FAQ (optional)
+```lua
+local wezterm = require("wezterm")
+return {
+    -- your config
+  }
+```
 
-- Q: **_"Where can I find the doc?"_**
-  A: Run `:help theme`
+5. Just add this line:
+
+```lua
+local wezterm = require("wezterm")
+
+return {
+    color_scheme = "Catppuccin",
+    -- your config
+  }
+```
+
+6. Done!
+
+### For more integration (recommended)
+
+The preceding steps follow the way WezTerm deals with its colorschemes, however it only changes the colors of your workspace. You can go further by also applying Catppuccin on the scrollbar, the tab-bar, the launcher, the split bars, the visual bell and the cursor when a dead key or a leader key is being processed:
+
+1. Open the file `wezterm.lua` where you cloned Catpuccin and copy its content.
+1. Paste it in your WezTerm config file:
+
+```lua
+local wezterm = require("wezterm")
+return {
+    color_scheme = "Catppuccin",
+    -- Content of wezterm.lua
+  }
+```
+
+3. Enjoy!
 
 ## 💝 Thanks to
 
-- [Human](https://github.com/catppuccin)
+-   [Pocco81](https://github.com/Pocco81)
+-   [LudoPinelli](https://github.com/LudoPinelli)
