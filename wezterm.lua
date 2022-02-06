@@ -32,5 +32,5 @@ colors = {
 		visual_bell = "#302D41",
 	
 		-- nightbuild only
-		compose_currsor = "#F8BD96",
+		compose_cursor = "#F8BD96",
 	},
