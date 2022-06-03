@@ -27,34 +27,62 @@
 local wezterm = require("wezterm")
 return {
     -- your config
-  }
+    -- ...
+}
 ```
 
-5. Just add this line:
+5. Just add these lines:
 
 ```lua
 local wezterm = require("wezterm")
+local catppuccin = require("colors/catppuccin")
 
 return {
-    color_scheme = "Catppuccin",
+    -- one of the flavours: latte | frappe | macchiato | mocha
+    colors = catppuccin("mocha"),
     -- your config
-  }
+    -- ...
+}
 ```
 
 6. Done!
 
 ### For more integration (recommended)
 
-The preceding steps follow the way WezTerm deals with its colorschemes, however it only changes the colors of your workspace. You can go further by also applying Catppuccin on the scrollbar, the tab-bar, the launcher, the split bars, the visual bell and the cursor when a dead key or a leader key is being processed:
+To change to a different flavour when WezTerm detects that your system-wide colorscheme has changed:
 
 1. Open the file `wezterm.lua` where you cloned Catpuccin and copy its content.
 1. Paste it in your WezTerm config file:
 
 ```lua
 local wezterm = require("wezterm")
+local catppuccin = require("colors/catppuccin")
+
+function scheme_for_appearance(appearance)
+    if appearance:find("Dark") then
+        -- the appearance for dark mode
+        return catppuccin("mocha")
+    else
+        -- the appearance for light mode
+        return catppuccin("latte")
+    end
+end
+
+wezterm.on("window-config-reloaded", function(window, pane)
+    local overrides = window:get_config_overrides() or {}
+    local appearance = window:get_appearance()
+    local scheme = scheme_for_appearance(appearance)
+    if overrides.background ~= scheme.background then
+        overrides.colors = scheme
+        window:set_config_overrides(overrides)
+    end
+end)
+
 return {
-    color_scheme = "Catppuccin",
-    -- Content of wezterm.lua
+    -- one of the flavours: latte | frappe | macchiato | mocha
+    colors = catppuccin("mocha"),
+    -- your config
+    -- ...
   }
 ```
 
