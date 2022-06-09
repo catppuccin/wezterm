@@ -12,58 +12,62 @@
 </p>
 
 <p align="center">
-  <img src="./assets/WezTerm.jpg"/>
+  <img src="./assets/WezTerm.png"/>
 </p>
 
 ## Usage
 
 1. Clone this repository locally
-1. If you're on a POSIX system: create a directory named `~/.config/wezterm/colors`, if you're on Windows, create a directory named `colors` in the same directory as the `wezterm.exe` (usually `C:\Program Files\WezTerm`).
-1. Move the file `Catppuccin.toml` from where you cloned Catppuccin to the `colors` directory you created in 2.
-1. Open your WezTerm config file (on a POSIX system: `~/.wezterm.lua` or `~/.config/wezterm/wezterm.lua`; on Windows: `wezterm.lua` in the same directory as the `wezterm.exe`).
+2. If you're on a POSIX system: create a directory named `~/.config/wezterm/colors`, if you're on Windows, create a directory named `colors` in the same directory as the `wezterm.exe` (usually `C:\Program Files\WezTerm`).
+3. Move the file `Catppuccin.toml` from where you cloned Catppuccin to the `colors` directory you created in step 2.
+4. Open your WezTerm config file (on a POSIX system: `~/.wezterm.lua` or `~/.config/wezterm/wezterm.lua`; on Windows: `wezterm.lua` in the same directory as the `wezterm.exe`).
    The WezTerm config file has the following structure:
 
 ```lua
 local wezterm = require("wezterm")
+
 return {
     -- your config
-  }
+    -- ...
+}
 ```
 
-5. Just add this line:
+5. Add these lines:
 
 ```lua
 local wezterm = require("wezterm")
+local catppuccin = require"colors/catppuccin".setup {}
 
 return {
-    color_scheme = "Catppuccin",
     -- your config
-  }
+    -- ...
+    colors = catppuccin,
+}
 ```
 
-6. Done!
-
-### For more integration (recommended)
-
-The preceding steps follow the way WezTerm deals with its colorschemes, however it only changes the colors of your workspace. You can go further by also applying Catppuccin on the scrollbar, the tab-bar, the launcher, the split bars, the visual bell and the cursor when a dead key or a leader key is being processed:
-
-1. Open the file `wezterm.lua` where you cloned Catpuccin and copy its content.
-1. Paste it in your WezTerm config file:
-
+6. (Optional) Tweak the config to your liking, these are the default values:
 ```lua
-local wezterm = require("wezterm")
-return {
-    color_scheme = "Catppuccin",
-    -- Content of wezterm.lua
-  }
+local catppuccin = require"colors/catppuccin".setup {
+  -- whether or not to sync with the system's theme
+  sync = true,
+  -- the flavours to switch between when syncing
+  -- available flavours: "latte" | "frappe" | "macchiato" | "mocha"
+  sync_flavours = {
+    light = "latte",
+    dark = "mocha"
+  },
+  -- the default/fallback flavour, when syncing is disabled
+  flavour = "mocha"
+}
 ```
 
-3. Enjoy!
+7. Enjoy!
 
 ## 💝 Thanks to
 
 -   [Pocco81](https://github.com/Pocco81)
 -   [LudoPinelli](https://github.com/LudoPinelli)
+-   [winston](https://github.com/nekowinston)
 
 &nbsp;
 
