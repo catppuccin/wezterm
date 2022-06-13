@@ -6,9 +6,9 @@
 </h3>
 
 <p align="center">
-    <a href="https://github.com/catppuccin/template/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/template?colorA=1e1e28&colorB=c9cbff&style=for-the-badge&logo=starship style=for-the-badge"></a>
-    <a href="https://github.com/catppuccin/template/issues"><img src="https://img.shields.io/github/issues/catppuccin/template?colorA=1e1e28&colorB=f7be95&style=for-the-badge"></a>
-    <a href="https://github.com/catppuccin/template/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/template?colorA=1e1e28&colorB=b1e1a6&style=for-the-badge"></a>
+	<a href="https://github.com/catppuccin/wezterm/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/wezterm?colorA=1e1e28&colorB=c9cbff&style=for-the-badge&logo=starship style=for-the-badge"></a>
+	<a href="https://github.com/catppuccin/wezterm/issues"><img src="https://img.shields.io/github/issues/catppuccin/wezterm?colorA=1e1e28&colorB=f7be95&style=for-the-badge"></a>
+	<a href="https://github.com/catppuccin/wezterm/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/wezterm?colorA=1e1e28&colorB=b1e1a6&style=for-the-badge"></a>
 </p>
 
 <p align="center">
@@ -17,9 +17,9 @@
 
 ## Usage
 
-1. Clone this repository locally
+1. Clone this repository locally, or download [catppuccin.lua](https://raw.githubusercontent.com/catppuccin/wezterm/main/catppuccin.lua) directly.
 2. If you're on a POSIX system: create a directory named `~/.config/wezterm/colors`, if you're on Windows, create a directory named `colors` in the same directory as the `wezterm.exe` (usually `C:\Program Files\WezTerm`).
-3. Move the file `Catppuccin.toml` from where you cloned Catppuccin to the `colors` directory you created in step 2.
+3. Move `catppuccin.lua` to the `colors` directory you created in step 2.
 4. Open your WezTerm config file (on a POSIX system: `~/.wezterm.lua` or `~/.config/wezterm/wezterm.lua`; on Windows: `wezterm.lua` in the same directory as the `wezterm.exe`).
    The WezTerm config file has the following structure:
 
@@ -27,8 +27,8 @@
 local wezterm = require("wezterm")
 
 return {
-    -- your config
-    -- ...
+	-- your config
+	-- ...
 }
 ```
 
@@ -36,28 +36,28 @@ return {
 
 ```lua
 local wezterm = require("wezterm")
-local catppuccin = require"colors/catppuccin".setup {}
+local catppuccin = require("colors/catppuccin").setup {}
 
 return {
-    -- your config
-    -- ...
-    colors = catppuccin,
+	-- your config
+	-- ...
+	colors = catppuccin,
 }
 ```
 
 6. (Optional) Tweak the config to your liking, these are the default values:
 ```lua
-local catppuccin = require"colors/catppuccin".setup {
-  -- whether or not to sync with the system's theme
-  sync = true,
-  -- the flavours to switch between when syncing
-  -- available flavours: "latte" | "frappe" | "macchiato" | "mocha"
-  sync_flavours = {
-    light = "latte",
-    dark = "mocha"
-  },
-  -- the default/fallback flavour, when syncing is disabled
-  flavour = "mocha"
+local catppuccin = require("colors/catppuccin").setup {
+	-- whether or not to sync with the system's theme
+	sync = true,
+	-- the flavours to switch between when syncing
+	-- available flavours: "latte" | "frappe" | "macchiato" | "mocha"
+	sync_flavours = {
+		light = "latte",
+		dark = "mocha"
+	},
+	-- the default/fallback flavour, when syncing is disabled
+	flavour = "mocha"
 }
 ```
 
@@ -65,9 +65,9 @@ local catppuccin = require"colors/catppuccin".setup {
 
 ## 💝 Thanks to
 
--   [Pocco81](https://github.com/Pocco81)
--   [LudoPinelli](https://github.com/LudoPinelli)
--   [winston](https://github.com/nekowinston)
+-	[Pocco81](https://github.com/Pocco81)
+-	[LudoPinelli](https://github.com/LudoPinelli)
+-	[winston](https://github.com/nekowinston)
 
 &nbsp;
 
