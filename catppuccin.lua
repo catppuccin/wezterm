@@ -118,33 +118,36 @@ local colors = {
 
 local catppuccin = {}
 function catppuccin.select(palette)
+	-- shorthand to check for the Latte flavour
+	local isLatte = palette == "latte"
+
 	return {
 		foreground = colors[palette].text,
 		background = colors[palette].base,
 		cursor_bg = colors[palette].rosewater,
 		cursor_border = colors[palette].rosewater,
-		cursor_fg = colors[palette].base,
+		cursor_fg = isLatte and colors[palette].base or colors[palette].crust,
 		selection_bg = colors[palette].surface2,
 		selection_fg = colors[palette].text,
 		ansi = {
-			colors[palette].overlay0,
+			isLatte and colors[palette].subtext1 or colors[palette].surface1,
 			colors[palette].red,
 			colors[palette].green,
 			colors[palette].yellow,
 			colors[palette].blue,
 			colors[palette].pink,
-			colors[palette].sky,
-			colors[palette].overlay2
+			colors[palette].teal,
+			isLatte and colors[palette].surface2 or colors[palette].subtext1
 		},
 		brights = {
-			colors[palette].overlay1,
+			isLatte and colors[palette].subtext0 or colors[palette].surface2,
 			colors[palette].red,
 			colors[palette].green,
 			colors[palette].yellow,
 			colors[palette].blue,
 			colors[palette].pink,
-			colors[palette].sky,
-			colors[palette].text
+			colors[palette].teal,
+			isLatte and colors[palette].surface1 or colors[palette].subtext0,
 		},
 		tab_bar = {
 			background = colors[palette].base,
@@ -176,7 +179,7 @@ function catppuccin.select(palette)
 			[17] = colors[palette].rosewater
 		},
 		scrollbar_thumb = colors[palette].surface2,
-		split = colors[palette].crust,
+		split = colors[palette].overlay0,
 		-- nightbuild only
 		compose_cursor = colors[palette].flamingo
 	}
