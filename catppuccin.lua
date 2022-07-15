@@ -1,4 +1,4 @@
-local wezterm = require "wezterm";
+local wezterm = require("wezterm")
 
 -- color variant hex codes
 local colors = {
@@ -28,7 +28,7 @@ local colors = {
 		surface0 = "#ccd0da",
 		crust = "#dce0e8",
 		mantle = "#e6e9ef",
-		base = "#eff1f5"
+		base = "#eff1f5",
 	},
 	frappe = {
 		rosewater = "#f2d5cf",
@@ -56,7 +56,7 @@ local colors = {
 		surface0 = "#414559",
 		base = "#303446",
 		mantle = "#292c3c",
-		crust = "#232634"
+		crust = "#232634",
 	},
 	macchiato = {
 		rosewater = "#f4dbd6",
@@ -84,7 +84,7 @@ local colors = {
 		surface0 = "#363a4f",
 		base = "#24273a",
 		mantle = "#1e2030",
-		crust = "#181926"
+		crust = "#181926",
 	},
 	mocha = {
 		rosewater = "#f5e0dc",
@@ -112,8 +112,8 @@ local colors = {
 		surface0 = "#313244",
 		base = "#1e1e2e",
 		mantle = "#181825",
-		crust = "#11111b"
-	}
+		crust = "#11111b",
+	},
 }
 
 local catppuccin = {}
@@ -137,7 +137,7 @@ function catppuccin.select(palette)
 			colors[palette].blue,
 			colors[palette].pink,
 			colors[palette].teal,
-			isLatte and colors[palette].surface2 or colors[palette].subtext1
+			isLatte and colors[palette].surface2 or colors[palette].subtext1,
 		},
 		brights = {
 			isLatte and colors[palette].subtext0 or colors[palette].surface2,
@@ -153,35 +153,35 @@ function catppuccin.select(palette)
 			background = colors[palette].base,
 			active_tab = {
 				bg_color = colors[palette].surface2,
-				fg_color = colors[palette].text
+				fg_color = colors[palette].text,
 			},
 			inactive_tab = {
 				bg_color = colors[palette].base,
-				fg_color = colors[palette].text
+				fg_color = colors[palette].text,
 			},
 			inactive_tab_hover = {
 				bg_color = colors[palette].surface2,
-				fg_color = colors[palette].text
+				fg_color = colors[palette].text,
 			},
 			new_tab = {
 				bg_color = colors[palette].base,
-				fg_color = colors[palette].text
+				fg_color = colors[palette].text,
 			},
 			new_tab_hover = {
 				bg_color = colors[palette].surface2,
 				fg_color = colors[palette].text,
-				italic = true
-			}
+				italic = true,
+			},
 		},
 		visual_bell = colors[palette].surface0,
 		indexed = {
 			[16] = colors[palette].peach,
-			[17] = colors[palette].rosewater
+			[17] = colors[palette].rosewater,
 		},
 		scrollbar_thumb = colors[palette].surface2,
 		split = colors[palette].overlay0,
 		-- nightbuild only
-		compose_cursor = colors[palette].flamingo
+		compose_cursor = colors[palette].flamingo,
 	}
 end
 
@@ -197,16 +197,18 @@ end
 function catppuccin.setup(options)
 	-- default to not syncing with the OS theme
 	local should_sync = true
-	if options.sync == false then should_sync = false end
+	if options.sync == false then
+		should_sync = false
+	end
 
 	-- default options
 	options = {
 		sync = should_sync,
 		sync_flavours = options.sync_flavours or {
 			light = "latte",
-			dark = "mocha"
+			dark = "mocha",
 		},
-		flavour = options.flavour or "mocha"
+		flavour = options.flavour or "mocha",
 	}
 
 	-- if sync is enabled, hook into the window-config-reloaded event
