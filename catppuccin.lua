@@ -150,17 +150,17 @@ function catppuccin.select(palette)
 			isLatte and colors[palette].surface1 or colors[palette].subtext0,
 		},
 		tab_bar = {
-			background = colors[palette].base,
+			background = colors[palette].crust,
 			active_tab = {
 				bg_color = colors[palette].surface2,
 				fg_color = colors[palette].text,
 			},
 			inactive_tab = {
-				bg_color = colors[palette].base,
+				bg_color = colors[palette].mantle,
 				fg_color = colors[palette].text,
 			},
 			inactive_tab_hover = {
-				bg_color = colors[palette].surface2,
+				bg_color = colors[palette].mantle,
 				fg_color = colors[palette].text,
 			},
 			new_tab = {
@@ -168,7 +168,7 @@ function catppuccin.select(palette)
 				fg_color = colors[palette].text,
 			},
 			new_tab_hover = {
-				bg_color = colors[palette].surface2,
+				bg_color = colors[palette].mantle,
 				fg_color = colors[palette].text,
 				italic = true,
 			},
