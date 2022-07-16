@@ -1,0 +1,85 @@
+[colors]
+ansi = [
+    '#51576d',
+    '#e78284',
+    '#a6d189',
+    '#e5c890',
+    '#8caaee',
+    '#f4b8e4',
+    '#81c8be',
+    '#b5bfe2',
+]
+background = '#303446'
+brights = [
+    '#626880',
+    '#e78284',
+    '#a6d189',
+    '#e5c890',
+    '#8caaee',
+    '#f4b8e4',
+    '#81c8be',
+    '#a5adce',
+]
+compose_cursor = '#eebebe'
+cursor_bg = '#f2d5cf'
+cursor_border = '#f2d5cf'
+cursor_fg = '#232634'
+foreground = '#c6d0f5'
+scrollbar_thumb = '#626880'
+selection_bg = '#626880'
+selection_fg = '#c6d0f5'
+split = '#737994'
+visual_bell = '#414559'
+
+[colors.indexed]
+16 = '#ef9f76'
+17 = '#f2d5cf'
+
+[colors.tab_bar]
+background = '#232634'
+inactive_tab_edge = '#575757'
+inactive_tab_edge_hover = '#363636'
+
+[colors.tab_bar.active_tab]
+bg_color = '#626880'
+fg_color = '#c6d0f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#292c3c'
+fg_color = '#c6d0f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#292c3c'
+fg_color = '#c6d0f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#303446'
+fg_color = '#c6d0f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#292c3c'
+fg_color = '#c6d0f5'
+intensity = 'Normal'
+italic = true
+strikethrough = false
+underline = 'None'
+
+[metadata]
+author = 'Catppuccin Org'
+name = 'Catppuccin Frappe'
