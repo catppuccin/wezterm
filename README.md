@@ -17,6 +17,21 @@
 
 ## Usage
 
+**There are two ways to use this colour scheme:**
+
+It is included in the nightly build of WezTerm, and there is a Lua version, which includes a `catppuccin.setup` function, for out-of-the-box theme synchronization with your operating system theme.
+
+**Included colourscheme in nightly:**
+1. Edit your `wezterm.lua`
+2. Set `colour_scheme` to your preferred flavour!
+```lua
+return {
+	-- ...your existing config
+	color_scheme = "Catppuccin Mocha", -- or Macchiato, Frappe, Latte
+}
+```
+
+**Lua version:**
 1. Clone this repository locally, or download [catppuccin.lua](https://raw.githubusercontent.com/catppuccin/wezterm/main/catppuccin.lua) directly.
 2. If you're on a POSIX system: create a directory named `~/.config/wezterm/colors`, if you're on Windows, create a directory named `colors` in the same directory as the `wezterm.exe` (usually `C:\Program Files\WezTerm`).
 3. Move `catppuccin.lua` to the `colors` directory you created in step 2.
@@ -68,6 +83,7 @@ local catppuccin = require("colors/catppuccin").setup {
 -	[Pocco81](https://github.com/Pocco81)
 -	[LudoPinelli](https://github.com/LudoPinelli)
 -	[winston](https://github.com/nekowinston)
+-	[wez](https://github.com/wez)
 
 &nbsp;
 
