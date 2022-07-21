@@ -1,0 +1,85 @@
+[colors]
+ansi = [
+    '#5c5f77',
+    '#d20f39',
+    '#40a02b',
+    '#df8e1d',
+    '#1e66f5',
+    '#ea76cb',
+    '#179299',
+    '#acb0be',
+]
+background = '#fdf7df'
+brights = [
+    '#6c6f85',
+    '#d20f39',
+    '#40a02b',
+    '#df8e1d',
+    '#1e66f5',
+    '#ea76cb',
+    '#179299',
+    '#bcc0cc',
+]
+compose_cursor = '#dd7878'
+cursor_bg = '#dc8a78'
+cursor_border = '#dc8a78'
+cursor_fg = '#fdf7df'
+foreground = '#4c4f69'
+scrollbar_thumb = '#acb0be'
+selection_bg = '#acb0be'
+selection_fg = '#4c4f69'
+split = '#9ca0b0'
+visual_bell = '#ccd0da'
+
+[colors.indexed]
+16 = '#fe640b'
+17 = '#dc8a78'
+
+[colors.tab_bar]
+background = '#dce0e8'
+inactive_tab_edge = '#575757'
+inactive_tab_edge_hover = '#363636'
+
+[colors.tab_bar.active_tab]
+bg_color = '#acb0be'
+fg_color = '#4c4f69'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#fbf1c7'
+fg_color = '#4c4f69'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#fbf1c7'
+fg_color = '#4c4f69'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#fdf7df'
+fg_color = '#4c4f69'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#fbf1c7'
+fg_color = '#4c4f69'
+intensity = 'Normal'
+italic = true
+strikethrough = false
+underline = 'None'
+
+[metadata]
+author = 'Catppuccin Org'
+name = 'Catppuccin Piccolo'

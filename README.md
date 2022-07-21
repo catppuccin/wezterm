@@ -27,7 +27,7 @@ It is included in the nightly build of WezTerm, and there is a Lua version, whic
 ```lua
 return {
 	-- ...your existing config
-	color_scheme = "Catppuccin Mocha", -- or Macchiato, Frappe, Latte
+	color_scheme = "Catppuccin Mocha", -- or Macchiato, Frappe, Latte, Piccolo
 }
 ```
 
@@ -66,7 +66,7 @@ local catppuccin = require("colors/catppuccin").setup {
 	-- whether or not to sync with the system's theme
 	sync = true,
 	-- the flavours to switch between when syncing
-	-- available flavours: "latte" | "frappe" | "macchiato" | "mocha"
+	-- available flavours: "latte" | "frappe" | "macchiato" | "mocha" | "piccolo"
 	sync_flavours = {
 		light = "latte",
 		dark = "mocha"
