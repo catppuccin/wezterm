@@ -12,16 +12,13 @@
 </p>
 
 <p align="center">
-  <img src="./assets/WezTerm.png"/>
+  <img src="./assets/screen.webp"/>
 </p>
 
 ## Usage
 
-**There are two ways to use this colour scheme:**
+Catppuccin is now included in Wezterm.
 
-Catppuccin is now included in Wezterm, and there is the legacy Lua version.
-
-**Included colourscheme:**
 1. Edit your `wezterm.lua`
 2. Set `colour_scheme` to your preferred flavour!
 ```lua
@@ -48,56 +45,6 @@ return {
 	color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
 }
 ```
-
-**Lua version (legacy):**
-
-For usage with WezTerm versions before [20220807-113146-c2fee766](https://github.com/wez/wezterm/releases/tag/20220807-113146-c2fee766).
-
-1. Clone this repository locally, or download [catppuccin.lua](https://raw.githubusercontent.com/catppuccin/wezterm/main/catppuccin.lua) directly.
-2. If you're on a POSIX system: create a directory named `~/.config/wezterm/colors`, if you're on Windows, create a directory named `colors` in the same directory as the `wezterm.exe` (usually `C:\Program Files\WezTerm`).
-3. Move `catppuccin.lua` to the `colors` directory you created in step 2.
-4. Open your WezTerm config file (on a POSIX system: `~/.wezterm.lua` or `~/.config/wezterm/wezterm.lua`; on Windows: `wezterm.lua` in the same directory as the `wezterm.exe`).
-   The WezTerm config file has the following structure:
-
-```lua
-local wezterm = require("wezterm")
-
-return {
-	-- your config
-	-- ...
-}
-```
-
-5. Add these lines:
-
-```lua
-local wezterm = require("wezterm")
-local catppuccin = require("colors/catppuccin").setup {}
-
-return {
-	-- your config
-	-- ...
-	colors = catppuccin,
-}
-```
-
-6. (Optional) Tweak the config to your liking, these are the default values:
-```lua
-local catppuccin = require("colors/catppuccin").setup {
-	-- whether or not to sync with the system's theme
-	sync = true,
-	-- the flavours to switch between when syncing
-	-- available flavours: "latte" | "frappe" | "macchiato" | "mocha"
-	sync_flavours = {
-		light = "latte",
-		dark = "mocha"
-	},
-	-- the default/fallback flavour, when syncing is disabled
-	flavour = "mocha"
-}
-```
-
-7. Enjoy!
 
 ## 💝 Thanks to
 
