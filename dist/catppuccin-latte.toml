@@ -37,11 +37,9 @@ visual_bell = '#ccd0da'
 
 [colors.tab_bar]
 background = '#dce0e8'
-inactive_tab_edge = '#575757'
-inactive_tab_edge_hover = '#363636'
 
 [colors.tab_bar.active_tab]
-bg_color = '#acb0be'
+bg_color = '#eff1f5'
 fg_color = '#4c4f69'
 intensity = 'Normal'
 italic = false
@@ -57,14 +55,6 @@ strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab_hover]
-bg_color = '#e6e9ef'
-fg_color = '#4c4f69'
-intensity = 'Normal'
-italic = false
-strikethrough = false
-underline = 'None'
-
-[colors.tab_bar.new_tab]
 bg_color = '#eff1f5'
 fg_color = '#4c4f69'
 intensity = 'Normal'
@@ -72,8 +62,16 @@ italic = false
 strikethrough = false
 underline = 'None'
 
+[colors.tab_bar.new_tab]
+bg_color = '#ccd0da'
+fg_color = '#4c4f69'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
 [colors.tab_bar.new_tab_hover]
-bg_color = '#e6e9ef'
+bg_color = '#bcc0cc'
 fg_color = '#4c4f69'
 intensity = 'Normal'
 italic = true
@@ -81,5 +79,6 @@ strikethrough = false
 underline = 'None'
 
 [metadata]
+aliases = []
 author = 'Catppuccin Org'
 name = 'Catppuccin Latte'

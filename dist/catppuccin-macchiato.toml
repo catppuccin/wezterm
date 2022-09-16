@@ -37,11 +37,9 @@ visual_bell = '#363a4f'
 
 [colors.tab_bar]
 background = '#181926'
-inactive_tab_edge = '#575757'
-inactive_tab_edge_hover = '#363636'
 
 [colors.tab_bar.active_tab]
-bg_color = '#5b6078'
+bg_color = '#24273a'
 fg_color = '#cad3f5'
 intensity = 'Normal'
 italic = false
@@ -57,14 +55,6 @@ strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab_hover]
-bg_color = '#1e2030'
-fg_color = '#cad3f5'
-intensity = 'Normal'
-italic = false
-strikethrough = false
-underline = 'None'
-
-[colors.tab_bar.new_tab]
 bg_color = '#24273a'
 fg_color = '#cad3f5'
 intensity = 'Normal'
@@ -72,8 +62,16 @@ italic = false
 strikethrough = false
 underline = 'None'
 
+[colors.tab_bar.new_tab]
+bg_color = '#363a4f'
+fg_color = '#cad3f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
 [colors.tab_bar.new_tab_hover]
-bg_color = '#1e2030'
+bg_color = '#494d64'
 fg_color = '#cad3f5'
 intensity = 'Normal'
 italic = true
@@ -81,5 +79,6 @@ strikethrough = false
 underline = 'None'
 
 [metadata]
+aliases = []
 author = 'Catppuccin Org'
 name = 'Catppuccin Macchiato'
