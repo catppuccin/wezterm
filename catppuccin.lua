@@ -152,7 +152,7 @@ function catppuccin.select(palette)
 		tab_bar = {
 			background = colors[palette].crust,
 			active_tab = {
-				bg_color = colors[palette].surface2,
+				bg_color = colors[palette].base,
 				fg_color = colors[palette].text,
 			},
 			inactive_tab = {
@@ -160,15 +160,15 @@ function catppuccin.select(palette)
 				fg_color = colors[palette].text,
 			},
 			inactive_tab_hover = {
-				bg_color = colors[palette].mantle,
-				fg_color = colors[palette].text,
-			},
-			new_tab = {
 				bg_color = colors[palette].base,
 				fg_color = colors[palette].text,
 			},
+			new_tab = {
+				bg_color = colors[palette].surface0,
+				fg_color = colors[palette].text,
+			},
 			new_tab_hover = {
-				bg_color = colors[palette].mantle,
+				bg_color = colors[palette].surface1,
 				fg_color = colors[palette].text,
 				italic = true,
 			},
