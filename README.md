@@ -17,10 +17,11 @@
 
 ## Usage
 
-Catppuccin is now included in Wezterm.
+Catppuccin is now included in WezTerm.
 
 1. Edit your `wezterm.lua`
 2. Set `colour_scheme` to your preferred flavour!
+
 ```lua
 return {
 	-- ...your existing config
@@ -28,7 +29,9 @@ return {
 }
 ```
 
-3. (Optional) To enable syncing with your OS theme, use `wezterm.gui.get_appearance()`
+3. (Optional) To enable syncing with your OS theme, use
+   `wezterm.gui.get_appearance()`
+
 ```lua
 local wezterm = require "wezterm"
 
@@ -46,12 +49,37 @@ return {
 }
 ```
 
+## 🙋 FAQ
+
+- Q: **_"How can I set custom color overrides?"_**
+  \
+  A: Use
+  [`wezterm.color.get_builtin_schemes()`](https://wezfurlong.org/wezterm/config/lua/wezterm.color/get_builtin_schemes.html)
+  like this:
+
+```lua
+local wezterm = require 'wezterm'
+
+local custom = wezterm.color.get_builtin_schemes()['Catppuccin Mocha']
+custom.background = "#000000"
+custom.tab_bar.background = "#040404"
+custom.tab_bar.inactive_tab.bg_color = "#0f0f0f"
+custom.tab_bar.new_tab.bg_color = "#080808"
+
+return {
+  color_schemes = {
+    ['OLEDppuccin'] = custom,
+  },
+  color_scheme = 'OLEDppuccin',
+}
+```
+
 ## 💝 Thanks to
 
--	[Pocco81](https://github.com/Pocco81)
--	[LudoPinelli](https://github.com/LudoPinelli)
--	[winston](https://github.com/nekowinston)
--	[wez](https://github.com/wez)
+- [Pocco81](https://github.com/Pocco81)
+- [LudoPinelli](https://github.com/LudoPinelli)
+- [winston](https://github.com/nekowinston)
+- [wez](https://github.com/wez)
 
 &nbsp;
 
