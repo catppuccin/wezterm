@@ -125,80 +125,79 @@ local mappings = {
 }
 
 function M.select(palette, accent)
+	local c = colors[palette]
 	-- shorthand to check for the Latte flavor
 	local isLatte = palette == "latte"
 
 	return {
-		foreground = colors[palette].text,
-		background = colors[palette].base,
+		foreground = c.text,
+		background = c.base,
 
-		cursor_fg = isLatte and colors[palette].base or colors[palette].crust,
-		cursor_bg = colors[palette].rosewater,
-		cursor_border = colors[palette].rosewater,
+		cursor_fg = isLatte and c.base or c.crust,
+		cursor_bg = c.rosewater,
+		cursor_border = c.rosewater,
 
-		selection_fg = colors[palette].text,
-		selection_bg = colors[palette].surface2,
+		selection_fg = c.text,
+		selection_bg = c.surface2,
 
-		scrollbar_thumb = colors[palette].surface2,
+		scrollbar_thumb = c.surface2,
 
-		split = colors[palette].overlay0,
+		split = c.overlay0,
 
 		ansi = {
-			isLatte and colors[palette].subtext1 or colors[palette].surface1,
-			colors[palette].red,
-			colors[palette].green,
-			colors[palette].yellow,
-			colors[palette].blue,
-			colors[palette].pink,
-			colors[palette].teal,
-			isLatte and colors[palette].surface2 or colors[palette].subtext1,
+			isLatte and c.subtext1 or c.surface1,
+			c.red,
+			c.green,
+			c.yellow,
+			c.blue,
+			c.pink,
+			c.teal,
+			isLatte and c.surface2 or c.subtext1,
 		},
 
 		brights = {
-			isLatte and colors[palette].subtext0 or colors[palette].surface2,
-			colors[palette].red,
-			colors[palette].green,
-			colors[palette].yellow,
-			colors[palette].blue,
-			colors[palette].pink,
-			colors[palette].teal,
-			isLatte and colors[palette].surface1 or colors[palette].subtext0,
+			isLatte and c.subtext0 or c.surface2,
+			c.red,
+			c.green,
+			c.yellow,
+			c.blue,
+			c.pink,
+			c.teal,
+			isLatte and c.surface1 or c.subtext0,
 		},
 
-		indexed = {
-			[16] = colors[palette].peach,
-			[17] = colors[palette].rosewater,
-		},
+		indexed = { [16] = c.peach, [17] = c.rosewater },
 
 		-- nightbuild only
-		compose_cursor = colors[palette].flamingo,
+		compose_cursor = c.flamingo,
 
 		tab_bar = {
-			background = colors[palette].crust,
+			background = c.crust,
 			active_tab = {
-				bg_color = colors[palette][accent],
-				fg_color = colors[palette].crust,
+				bg_color = c[accent],
+				fg_color = c.crust,
 			},
 			inactive_tab = {
-				bg_color = colors[palette].mantle,
-				fg_color = colors[palette].text,
+				bg_color = c.mantle,
+				fg_color = c.text,
 			},
 			inactive_tab_hover = {
-				bg_color = colors[palette].base,
-				fg_color = colors[palette].text,
+				bg_color = c.base,
+				fg_color = c.text,
 			},
 			new_tab = {
-				bg_color = colors[palette].surface0,
-				fg_color = colors[palette].text,
+				bg_color = c.surface0,
+				fg_color = c.text,
 			},
 			new_tab_hover = {
-				bg_color = colors[palette].surface1,
-				fg_color = colors[palette].text,
-				italic = true,
+				bg_color = c.surface1,
+				fg_color = c.text,
 			},
+			-- fancy tab bar
+			inactive_tab_edge = c.pink,
 		},
 
-		visual_bell = colors[palette].surface0,
+		visual_bell = c.surface0,
 	}
 end
 
@@ -208,6 +207,21 @@ local function select_for_appearance(appearance, options)
 	else
 		return options.light
 	end
+end
+
+local function tableMerge(t1, t2)
+	for k, v in pairs(t2) do
+		if type(v) == "table" then
+			if type(t1[k] or false) == "table" then
+				tableMerge(t1[k] or {}, t2[k] or {})
+			else
+				t1[k] = v
+			end
+		else
+			t1[k] = v
+		end
+	end
+	return t1
 end
 
 function M.setup(c, opts)
@@ -223,20 +237,20 @@ function M.setup(c, opts)
 		sync_flavors = opts.sync_flavors or { light = "latte", dark = "mocha" },
 	}
 
-	-- fallback if no options are passed
+	-- insert all flavors
+	local color_schemes = {}
+	for k, v in pairs(mappings) do
+		color_schemes[v] = M.select(k, o.accent)
+	end
 	if c.color_schemes == nil then
 		c.color_schemes = {}
 	end
-
-	-- insert all flavors
-	for k, v in pairs(mappings) do
-		c.color_schemes[v] = M.select(k, o.accent)
-	end
+	c.color_schemes = tableMerge(c.color_schemes, color_schemes)
 
 	if opts.sync then
 		c.color_scheme = select_for_appearance(wezterm.gui.get_appearance(), {
-			dark = opts.sync_flavors.dark,
-			light = opts.sync_flavors.light,
+			dark = mappings[opts.sync_flavors.dark],
+			light = mappings[opts.sync_flavors.light],
 		})
 		c.command_palette_bg_color = select_for_appearance(wezterm.gui.get_appearance(), {
 			dark = colors[o.sync_flavors.dark].crust,
@@ -251,6 +265,22 @@ function M.setup(c, opts)
 		c.command_palette_bg_color = colors[o.flavor].crust
 		c.command_palette_fg_color = colors[o.flavor].text
 	end
+
+	local window_frame = {
+		active_titlebar_bg = colors[o.flavor].crust,
+		active_titlebar_fg = colors[o.flavor].text,
+		inactive_titlebar_bg = colors[o.flavor].crust,
+		inactive_titlebar_fg = colors[o.flavor].text,
+		button_fg = colors[o.flavor].text,
+		button_bg = colors[o.flavor].base,
+	}
+
+	if c.window_frame == nil then
+		c.window_frame = {}
+	end
+	c.window_frame = tableMerge(c.window_frame, window_frame)
+
+	return c
 end
 
 return M
