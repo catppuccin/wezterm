@@ -224,7 +224,7 @@ local function tableMerge(t1, t2)
 	return t1
 end
 
-function M.setup(c, opts)
+function M.apply_to_config(c, opts)
 	if not opts then
 		opts = {}
 	end
@@ -279,8 +279,6 @@ function M.setup(c, opts)
 		c.window_frame = {}
 	end
 	c.window_frame = tableMerge(c.window_frame, window_frame)
-
-	return c
 end
 
 return M
