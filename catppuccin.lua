@@ -249,8 +249,8 @@ function M.setup(c, opts)
 
 	if opts.sync then
 		c.color_scheme = select_for_appearance(wezterm.gui.get_appearance(), {
-			dark = mappings[opts.sync_flavors.dark],
-			light = mappings[opts.sync_flavors.light],
+			dark = mappings[o.sync_flavors.dark],
+			light = mappings[o.sync_flavors.light],
 		})
 		c.command_palette_bg_color = select_for_appearance(wezterm.gui.get_appearance(), {
 			dark = colors[o.sync_flavors.dark].crust,
