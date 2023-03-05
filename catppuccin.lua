@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 
--- color variant hex codes
+local M = {}
+
 local colors = {
 	latte = {
 		rosewater = "#dc8a78",
@@ -116,19 +117,32 @@ local colors = {
 	},
 }
 
-local catppuccin = {}
-function catppuccin.select(palette)
-	-- shorthand to check for the Latte flavour
+local mappings = {
+	mocha = "Catppuccin Mocha",
+	macchiato = "Catppuccin Macchiato",
+	frappe = "Catppuccin Frappe",
+	latte = "Catppuccin Latte",
+}
+
+function M.select(palette, accent)
+	-- shorthand to check for the Latte flavor
 	local isLatte = palette == "latte"
 
 	return {
 		foreground = colors[palette].text,
 		background = colors[palette].base,
+
+		cursor_fg = isLatte and colors[palette].base or colors[palette].crust,
 		cursor_bg = colors[palette].rosewater,
 		cursor_border = colors[palette].rosewater,
-		cursor_fg = isLatte and colors[palette].base or colors[palette].crust,
-		selection_bg = colors[palette].surface2,
+
 		selection_fg = colors[palette].text,
+		selection_bg = colors[palette].surface2,
+
+		scrollbar_thumb = colors[palette].surface2,
+
+		split = colors[palette].overlay0,
+
 		ansi = {
 			isLatte and colors[palette].subtext1 or colors[palette].surface1,
 			colors[palette].red,
@@ -139,6 +153,7 @@ function catppuccin.select(palette)
 			colors[palette].teal,
 			isLatte and colors[palette].surface2 or colors[palette].subtext1,
 		},
+
 		brights = {
 			isLatte and colors[palette].subtext0 or colors[palette].surface2,
 			colors[palette].red,
@@ -149,11 +164,20 @@ function catppuccin.select(palette)
 			colors[palette].teal,
 			isLatte and colors[palette].surface1 or colors[palette].subtext0,
 		},
+
+		indexed = {
+			[16] = colors[palette].peach,
+			[17] = colors[palette].rosewater,
+		},
+
+		-- nightbuild only
+		compose_cursor = colors[palette].flamingo,
+
 		tab_bar = {
 			background = colors[palette].crust,
 			active_tab = {
-				bg_color = colors[palette].base,
-				fg_color = colors[palette].text,
+				bg_color = colors[palette][accent],
+				fg_color = colors[palette].crust,
 			},
 			inactive_tab = {
 				bg_color = colors[palette].mantle,
@@ -173,59 +197,60 @@ function catppuccin.select(palette)
 				italic = true,
 			},
 		},
+
 		visual_bell = colors[palette].surface0,
-		indexed = {
-			[16] = colors[palette].peach,
-			[17] = colors[palette].rosewater,
-		},
-		scrollbar_thumb = colors[palette].surface2,
-		split = colors[palette].overlay0,
-		-- nightbuild only
-		compose_cursor = colors[palette].flamingo,
 	}
 end
 
--- utility functions for interacting with wezterm API
-local function scheme_for_appearance(appearance, options)
+local function select_for_appearance(appearance, options)
 	if appearance:find("Dark") then
-		return catppuccin.select(options.sync_flavours.dark)
+		return options.dark
 	else
-		return catppuccin.select(options.sync_flavours.light)
+		return options.light
 	end
 end
 
-function catppuccin.setup(options)
-	-- default to not syncing with the OS theme
-	local should_sync = true
-	if options.sync == false then
-		should_sync = false
+function M.setup(c, opts)
+	if not opts then
+		opts = {}
 	end
 
 	-- default options
-	options = {
-		sync = should_sync,
-		sync_flavours = options.sync_flavours or {
-			light = "latte",
-			dark = "mocha",
-		},
-		flavour = options.flavour or "mocha",
+	local o = {
+		flavor = opts.flavor or "mocha",
+		accent = opts.accent or "blue",
+		sync = opts.sync or false,
+		sync_flavors = opts.sync_flavors or { light = "latte", dark = "mocha" },
 	}
 
-	-- if sync is enabled, hook into the window-config-reloaded event
-	-- snippet from https://wezfurlong.org/wezterm/config/lua/window/get_appearance.html#windowget_appearance
-	if options.sync then
-		wezterm.on("window-config-reloaded", function(window, pane)
-			local overrides = window:get_config_overrides() or {}
-			local appearance = window:get_appearance()
-			local scheme = scheme_for_appearance(appearance, options)
-			if overrides.background ~= scheme.background then
-				overrides.colors = scheme
-				window:set_config_overrides(overrides)
-			end
-		end)
+	-- fallback if no options are passed
+	if c.color_schemes == nil then
+		c.color_schemes = {}
 	end
 
-	return catppuccin.select(options.flavour)
+	-- insert all flavors
+	for k, v in pairs(mappings) do
+		c.color_schemes[v] = M.select(k, o.accent)
+	end
+
+	if opts.sync then
+		c.color_scheme = select_for_appearance(wezterm.gui.get_appearance(), {
+			dark = opts.sync_flavors.dark,
+			light = opts.sync_flavors.light,
+		})
+		c.command_palette_bg_color = select_for_appearance(wezterm.gui.get_appearance(), {
+			dark = colors[o.sync_flavors.dark].crust,
+			light = colors[o.sync_flavors.light].crust,
+		})
+		c.command_palette_fg_color = select_for_appearance(wezterm.gui.get_appearance(), {
+			dark = colors[o.sync_flavors.dark].text,
+			light = colors[o.sync_flavors.light].text,
+		})
+	else
+		c.color_scheme = mappings[o.flavor]
+		c.command_palette_bg_color = colors[o.flavor].crust
+		c.command_palette_fg_color = colors[o.flavor].text
+	end
 end
 
-return catppuccin
+return M
