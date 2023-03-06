@@ -1,14 +1,14 @@
 <h3 align="center">
-	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
-	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
-	Catppuccin for <a href="https://github.com/wez/wezterm">WezTerm</a>
-	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
+  Catppuccin for <a href="https://github.com/wez/wezterm">WezTerm</a>
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
 <p align="center">
-	<a href="https://github.com/catppuccin/wezterm/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/wezterm?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
-	<a href="https://github.com/catppuccin/wezterm/issues"><img src="https://img.shields.io/github/issues/catppuccin/wezterm?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
-	<a href="https://github.com/catppuccin/wezterm/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/wezterm?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+  <a href="https://github.com/catppuccin/wezterm/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/wezterm?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+  <a href="https://github.com/catppuccin/wezterm/issues"><img src="https://img.shields.io/github/issues/catppuccin/wezterm?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+  <a href="https://github.com/catppuccin/wezterm/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/wezterm?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 <p align="center">
@@ -17,15 +17,15 @@
 
 ## Usage
 
-Catppuccin is now included in WezTerm.
+Catppuccin is now [included in WezTerm](https://wezfurlong.org/wezterm/colorschemes/c/index.html#catppuccin-frappe).
 
-1. Edit your `wezterm.lua`
-2. Set `colour_scheme` to your preferred flavour!
+1. Edit your `wezterm.lua`.
+2. Set `color_scheme` to your preferred flavor.
 
 ```lua
 return {
-	-- ...your existing config
-	color_scheme = "Catppuccin Mocha", -- or Macchiato, Frappe, Latte
+  -- ...your existing config
+  color_scheme = "Catppuccin Mocha", -- or Macchiato, Frappe, Latte
 }
 ```
 
@@ -36,16 +36,16 @@ return {
 local wezterm = require "wezterm"
 
 function scheme_for_appearance(appearance)
-	if appearance:find "Dark" then
-		return "Catppuccin Mocha"
-	else
-		return "Catppuccin Latte"
-	end
+  if appearance:find "Dark" then
+    return "Catppuccin Mocha"
+  else
+    return "Catppuccin Latte"
+  end
 end
 
 return {
-	-- ...your existing config
-	color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
+  -- ...your existing config
+  color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
 }
 ```
 
@@ -58,9 +58,9 @@ return {
   like this:
 
 ```lua
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 
-local custom = wezterm.color.get_builtin_schemes()['Catppuccin Mocha']
+local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 custom.background = "#000000"
 custom.tab_bar.background = "#040404"
 custom.tab_bar.inactive_tab.bg_color = "#0f0f0f"
@@ -68,9 +68,9 @@ custom.tab_bar.new_tab.bg_color = "#080808"
 
 return {
   color_schemes = {
-    ['OLEDppuccin'] = custom,
+    ["OLEDppuccin"] = custom,
   },
-  color_scheme = 'OLEDppuccin',
+  color_scheme = "OLEDppuccin",
 }
 ```
 
