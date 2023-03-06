@@ -124,8 +124,8 @@ local mappings = {
 	latte = "Catppuccin Latte",
 }
 
-function M.select(palette, accent)
-	local c = colors[palette]
+function M.select(palette, flavor, accent)
+	local c = palette[flavor]
 	-- shorthand to check for the Latte flavor
 	local isLatte = palette == "latte"
 
@@ -230,17 +230,21 @@ function M.apply_to_config(c, opts)
 	end
 
 	-- default options
-	local o = {
-		flavor = opts.flavor or "mocha",
-		accent = opts.accent or "blue",
-		sync = opts.sync or false,
-		sync_flavors = opts.sync_flavors or { light = "latte", dark = "mocha" },
+	local defaults = {
+		flavor = "mocha",
+		accent = "blue",
+		sync = false,
+		sync_flavors = { light = "latte", dark = "mocha" },
+		overrides = { mocha = {}, macchiato = {}, frappe = {}, latte = {} },
 	}
+
+	local o = tableMerge(defaults, opts)
 
 	-- insert all flavors
 	local color_schemes = {}
-	for k, v in pairs(mappings) do
-		color_schemes[v] = M.select(k, o.accent)
+	local palette = tableMerge(colors, o.overrides)
+	for flavor, name in pairs(mappings) do
+		color_schemes[name] = M.select(palette, flavor, o.accent)
 	end
 	if c.color_schemes == nil then
 		c.color_schemes = {}
