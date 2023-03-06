@@ -194,7 +194,7 @@ function M.select(palette, flavor, accent)
 				fg_color = c.text,
 			},
 			-- fancy tab bar
-			inactive_tab_edge = c.pink,
+			inactive_tab_edge = c.surface0,
 		},
 
 		visual_bell = c.surface0,
