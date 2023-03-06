@@ -1,29 +1,29 @@
 [colors]
 ansi = [
-    '#5c5f77',
-    '#d20f39',
-    '#40a02b',
-    '#df8e1d',
-    '#1e66f5',
-    '#ea76cb',
-    '#179299',
-    '#acb0be',
+  '#bcc0cc',
+  '#d20f39',
+  '#40a02b',
+  '#df8e1d',
+  '#1e66f5',
+  '#ea76cb',
+  '#179299',
+  '#5c5f77',
 ]
 background = '#eff1f5'
 brights = [
-    '#6c6f85',
-    '#d20f39',
-    '#40a02b',
-    '#df8e1d',
-    '#1e66f5',
-    '#ea76cb',
-    '#179299',
-    '#bcc0cc',
+  '#acb0be',
+  '#d20f39',
+  '#40a02b',
+  '#df8e1d',
+  '#1e66f5',
+  '#ea76cb',
+  '#179299',
+  '#6c6f85',
 ]
 compose_cursor = '#dd7878'
 cursor_bg = '#dc8a78'
 cursor_border = '#dc8a78'
-cursor_fg = '#eff1f5'
+cursor_fg = '#dce0e8'
 foreground = '#4c4f69'
 scrollbar_thumb = '#acb0be'
 selection_bg = '#acb0be'
@@ -37,10 +37,11 @@ visual_bell = '#ccd0da'
 
 [colors.tab_bar]
 background = '#dce0e8'
+inactive_tab_edge = '#ea76cb'
 
 [colors.tab_bar.active_tab]
-bg_color = '#eff1f5'
-fg_color = '#4c4f69'
+bg_color = '#1e66f5'
+fg_color = '#dce0e8'
 intensity = 'Normal'
 italic = false
 strikethrough = false
@@ -74,7 +75,7 @@ underline = 'None'
 bg_color = '#bcc0cc'
 fg_color = '#4c4f69'
 intensity = 'Normal'
-italic = true
+italic = false
 strikethrough = false
 underline = 'None'
 
