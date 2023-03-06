@@ -37,10 +37,10 @@ visual_bell = '#ccd0da'
 
 [colors.tab_bar]
 background = '#dce0e8'
-inactive_tab_edge = '#ea76cb'
+inactive_tab_edge = '#ccd0da'
 
 [colors.tab_bar.active_tab]
-bg_color = '#1e66f5'
+bg_color = '#8839ef'
 fg_color = '#dce0e8'
 intensity = 'Normal'
 italic = false
