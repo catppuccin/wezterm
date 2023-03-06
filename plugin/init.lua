@@ -232,7 +232,7 @@ function M.apply_to_config(c, opts)
 	-- default options
 	local defaults = {
 		flavor = "mocha",
-		accent = "blue",
+		accent = "mauve",
 		sync = false,
 		sync_flavors = { light = "latte", dark = "mocha" },
 		overrides = { mocha = {}, macchiato = {}, frappe = {}, latte = {} },
