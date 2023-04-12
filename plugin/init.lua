@@ -235,16 +235,19 @@ function M.apply_to_config(c, opts)
 		accent = "mauve",
 		sync = false,
 		sync_flavors = { light = "latte", dark = "mocha" },
-		overrides = { mocha = {}, macchiato = {}, frappe = {}, latte = {} },
+		color_overrides = { mocha = {}, macchiato = {}, frappe = {}, latte = {} },
+		token_overrides = { mocha = {}, macchiato = {}, frappe = {}, latte = {} },
 	}
 
 	local o = tableMerge(defaults, opts)
 
 	-- insert all flavors
 	local color_schemes = {}
-	local palette = tableMerge(colors, o.overrides)
+	local palette = tableMerge(colors, o.color_overrides)
 	for flavor, name in pairs(mappings) do
-		color_schemes[name] = M.select(palette, flavor, o.accent)
+		local spec = M.select(palette, flavor, o.accent)
+    local overrides = o.token_overrides[flavor]
+		color_schemes[name] = tableMerge(spec, overrides)
 	end
 	if c.color_schemes == nil then
 		c.color_schemes = {}
